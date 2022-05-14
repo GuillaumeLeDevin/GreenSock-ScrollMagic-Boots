@@ -60,7 +60,50 @@
         var controller = new ScrollMagic.Controller();
 
         //Tween
-        var tween = TweenMax.from('#ree', 1, {left: -700, rotation: -50, ease: Power2.easeInOut})
+        var tween = TweenMax.from("#ree", 1, {left: -700, rotation: -50, ease: Power2.easeInOut});
+
+        var tween2 = TweenMax.fromTo('#bal', 1,
+        {left: -200, rotation: -10},
+        {left: 0, rotation: 10, ease:Power2.easeInOut});
+
+        var tweenLi = TweenMax.staggerFromTo('.reeLi', 0.75,
+        {opacity:0, y:-100, ease:Power4.easeIn},
+        {opacity:1, y:0, ease:Power4.easeIn}, 0.1);
+
+        var tweenBtn = TweenMax.staggerFromTo('.btn', 0.75,
+        {opacity:0, x:-100, ease:Power4.easeIn},
+        {opacity:1, x:0, ease:Power4.easeIn}, 0.1)
+
+        //Scene ScrollMagic
+        var scene = new ScrollMagic.Scene({triggerElement: "#animate1", offset: -200})
+                    .triggerHook(0.4)
+                    .addIndicators({name: "reebook", colorTrigger: "red", indent: 200}) 
+                    .setTween(tween)
+                    .reverse(false)
+                    .addTo(controller)  
+
+        var scene2 = new ScrollMagic.Scene({triggerElement: "#animate2", offset: -50})
+                    .triggerHook(0.6)
+                    .addIndicators({name: "bal", colorTrigger: "blue", indent: 500}) 
+                    .setTween(tween2)
+                    .reverse(false)
+                    .addTo(controller)
+                    
+        var scene3 = new ScrollMagic.Scene({triggerElement: "#animate1", offset: -200})
+                    .triggerHook(0.5)
+                    .addIndicators({name: "li", colorTrigger: "green", indent: 100}) 
+                    .setTween(tweenLi)
+                    .reverse(false)
+                    .addTo(controller)
+
+        var scene4 = new ScrollMagic.Scene({triggerElement: ".box", offset: -100})
+                    .triggerHook(0.45)
+                    .addIndicators({name: "btn", colorTrigger: "black", indent: 250}) 
+                    .setTween(tweenBtn)
+                    .reverse(false)
+                    .addTo(controller)
+
+
     </script>
 
 </body>
